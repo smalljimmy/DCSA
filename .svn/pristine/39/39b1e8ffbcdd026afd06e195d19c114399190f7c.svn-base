@@ -1,0 +1,22 @@
+//
+// Prefix header for all source files of the 'BRS' target in the 'BRS' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "LanguageController.h"//设置本地化语言
+
+    #import "BaseViewController.h"//基本类
+    #import "ParameterSettings.h" //参数设置类
+
+    #import "JsonFactory.h"//接口请求类
+
+#endif

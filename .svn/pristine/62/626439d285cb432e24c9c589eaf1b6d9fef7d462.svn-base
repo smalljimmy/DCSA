@@ -1,0 +1,4 @@
+<h3>News-List</h3>
+<f:for each="{news}" as="new">
+	{new.title}<br/>
+</f:for>

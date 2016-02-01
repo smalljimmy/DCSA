@@ -1,0 +1,45 @@
+<f:layout name="Default" />
+
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+<h1>Banner</h1>
+
+<f:flashMessages />
+
+<f:render partial="FormErrors" />
+
+<f:form enctype="multipart/form-data" action="updateBanner" name="banner" object="{editBanner}" >
+	<f:form.hidden property="type" value="12"/>
+	<f:form.hidden property="subtype" value="1"/>
+	<label for="title">Titel</label> <f:form.textfield id="title" class="formtext" property="title" /><br/>
+	<label for="url">Ziel-URL</label> <f:form.textfield id="url" class="formtext" property="url" /><br/>
+	<label for="recipients">Empfänger</label> <f:form.select size="5" multiple="multiple" property="broadcastarr" id="recipients" options="{customers}" optionValueField="uid" optionLabelField="portalUser.company"/><br/>
+	<label for="upload">&nbsp;</label> <f:form.upload id="upload" name="file"/><br/>
+	<label for="submit"> </label> <f:form.submit id="submit" value="Save" />
+</f:form>
+
+<h3>Message-List</h3>
+<table>
+<tr>
+	<th></th>
+	<th>Title</th>
+	<th>Ziel-URL</th>
+	<f:for each="{banners}" as="banner"><f:if condition="{banner.customer}==0"><tr>
+	<td><img src="{banner.path}" width="100" height="25" alt="{banner.path}" /></td>
+        <td>{banner.title}</td>
+	<td>{banner.url}</td>
+	<td><a href="{f:uri.action(action:'editBanner',arguments:{editBanner:banner})}">Edit</a> <a href="{f:uri.action(action:'deleteBanner',arguments:{banner:banner})}">Delete</a></td>
+</tr></f:if></f:for>
+</table>
+</f:section>

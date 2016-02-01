@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Company custom -->
+    <string name="app_name">dcsa</string>
+    
+    <!-- Home action icon name -->
+    <string name="home_icon_text_1">Kontakt</string>
+    <string name="home_icon_text_2">Bilder</string>
+    <string name="home_icon_text_3">Über uns</string>
+    <string name="home_icon_text_4">Dokumente</string>
+    <string name="home_icon_text_5">News</string>
+    <string name="home_icon_text_6">Standort</string>
+    <string name="home_icon_text_7">Anfrage</string>
+    
+    <!-- System configuration -->
+    <string name="loading">Laden</string>
+    <string name="app_init_failed">Initialisierung fehlgeschlagen!</string>
+    <string name="no_network">Kein Netzwerk!</string>
+    <string name="app_offline">offline!</string>
+    <string name="image_content_escription"></string>   
+    <string name="label_email_address">Email-Adresse</string> 
+    <string name="label_content">Ihr Anliegen</string> 
+    <string name="label_email_title">Betreff</string> 
+    <string name="button_text_submit">Absenden</string> 
+    <string name="title_is_empty">Titel muss gefüllt werden!</string> 
+    <string name="email_is_empty">E-Mail müssen ausgefüllt werden!</string> 
+    <string name="content_is_empty">Inhalt gefüllt werden muss!</string> 
+    <string name="download_failed">Download fehlgeschlagen!</string> 
+    <string name="download_complete">Heruntergeladene abgeschlossen!</string> 
+    <string name="submit_failed">Nicht einreichen!</string>
+    <string name="no_content">Kein Inhalt!</string>
+    
+    <string name="submit_duplicate_content">Bitte keine doppelten Inhalte einreichen!</string>
+    <string name="get_rss_data_failed">RSS-Inhalte nicht!</string>
+    <string name="download_success">Laden Sie Erfolg!</string>
+    <string name="downloading">Herunterladen&#8230;</string>
+    
+    <string name="telephone">Telefon</string> 
+    <string name="fax">Fax</string>
+    <string name="email">E-Mail</string>
+    <string name="hr_number">Hr Number</string>
+    <string name="web_site">Webseite</string>
+    
+    <string name="subject_line_contact">Kontaktanfrage via Mobile App</string>
+    <string name="subject_line_request">Angebotsanfrage via Mobile App</string>
+</resources>

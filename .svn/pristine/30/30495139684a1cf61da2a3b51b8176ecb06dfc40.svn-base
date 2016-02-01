@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-12T18:09:08Z" product-name="stdapp">
+		<header/>
+		<body>
+
+			<trans-unit id="name.description">
+				<source>name</source>
+			</trans-unit>
+			<trans-unit id="action.description">
+				<source>action</source>
+			</trans-unit>
+			<trans-unit id="disabled.description">
+				<source>disabled</source>
+			</trans-unit>
+			<trans-unit id="is_menu.description">
+				<source>isMenu</source>
+			</trans-unit>
+			<trans-unit id="is_fallback.description">
+				<source>isFallback</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-12T18:09:08Z" product-name="stdapp">
+		<header/>
+		<body>
+
+			<trans-unit id="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="type.description">
+				<source>type</source>
+			</trans-unit>
+			<trans-unit id="subtitle.description">
+				<source>subtitle</source>
+			</trans-unit>
+			<trans-unit id="text.description">
+				<source>text</source>
+			</trans-unit>
+			<trans-unit id="start.description">
+				<source>start</source>
+			</trans-unit>
+			<trans-unit id="end.description">
+				<source>end</source>
+			</trans-unit>
+			<trans-unit id="sort.description">
+				<source>sort</source>
+			</trans-unit>
+			<trans-unit id="disabled.description">
+				<source>disabled</source>
+			</trans-unit>
+			<trans-unit id="broadcast.description">
+				<source>broadcast</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

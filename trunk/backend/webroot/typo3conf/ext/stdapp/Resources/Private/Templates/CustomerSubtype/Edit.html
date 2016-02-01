@@ -1,0 +1,22 @@
+<h3>Konfiguration Datenherkunft</h3>
+
+<f:flashMessages />
+
+<table>
+<tr>
+	<th>Resource</th>
+	<th>Quelle</th>
+	<th>Externe URL</th>
+<f:for each="{customerSubtypes}" as="customerSubtype"><f:if condition="{customerSubtype.resourceType.level} > 0"><tr><f:form action="update" name="customerSubtype" object="{customerSubtype}">
+        <td>{customerSubtype.resourceType.name}</td>
+	<f:if condition="{customerSubtype.resourceType.level} > 2"><f:then>
+	<td><f:form.select property="subtype" options="{0:'default',1:'User',2:'externe URL'}"/></td>
+	<td><f:form.textfield property="url" /></td>
+	</f:then><f:else>
+	<td><f:form.select property="subtype" options="{0:'default',1:'User'}"/></td>
+	<td></td>
+	</f:else></f:if>
+	<td><f:form.submit value="Save" /></td>
+</f:form></tr></f:if></f:for>
+</table>
+

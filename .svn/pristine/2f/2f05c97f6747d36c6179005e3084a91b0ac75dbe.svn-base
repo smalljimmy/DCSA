@@ -1,0 +1,94 @@
+//
+//  DocsViewController.m
+//  BRS
+//
+//  Created by cgx on 13-10-28.
+//  Copyright (c) 2013年 DouMob. All rights reserved.
+//
+
+#import "DocsViewController.h"
+
+@interface DocsViewController ()
+
+@end
+
+@implementation DocsViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    [super hiddenRightButton];//隐藏右边的按钮
+    
+    docsTableView=[[UITableView alloc]initWithFrame:CGRectMake(0,44, WIDTH, 416+(iPhone5?88:0))];
+    docsTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    docsTableView.backgroundView=nil;
+    docsTableView.backgroundColor=[UIColor clearColor];
+    docsTableView.delegate=self;
+    docsTableView.dataSource=self;
+    [self.view addSubview:docsTableView];
+    [docsTableView release];
+
+    
+}
+
+//返回上一级
+-(void)backPreviousPage
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 8;
+}
+
+-(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100.0;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIndefiner=@"cellIndefiner";
+    DocsCell *cell=(DocsCell *)[tableView dequeueReusableCellWithIdentifier:cellIndefiner];
+    if (cell==nil)
+    {
+        NSArray *xib=[[NSBundle mainBundle]loadNibNamed:@"DocsCell" owner:self options:nil];
+        cell=[xib objectAtIndex:0];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
+    
+    
+    return cell;
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+ 
+    
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

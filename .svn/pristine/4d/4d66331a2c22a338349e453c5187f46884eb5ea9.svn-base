@@ -1,0 +1,50 @@
+<f:layout name="Default" />
+
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+<h1>Nachrichten</h1>
+
+<f:flashMessages />
+
+<f:render partial="FormErrors" />
+
+<f:form action="updateMessage" name="message" object="{editMessage}" >
+	<f:form.hidden property="type" value="7"/>
+	<label for="title">Titel</label><f:form.textfield id="title" class="formtext" property="title" /><br/>
+	<label for="subtitle">Subtitel</label><f:form.textfield id="subtitle" class="formtext" property="subtitle" /><br/>
+	<label for="text">Text</label><f:form.textarea id="text" property="text" /><br/>
+	<label for="start">Start</label><f:form.textfield property="start" id="start" maxlength="16" size="8" value="{editMessage.start->f:format.date(format:'d.m.Y H:i')}"/><a href="javascript:NewCal('start','ddmmyyyy',1)"><img src="../fileadmin/images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a><br/>
+	<label for="end">End</label><f:form.textfield property="end" id="end" maxlength="16" size="8" value="{editMessage.end->f:format.date(format:'d.m.Y H:i')}"/><a href="javascript:NewCal('end','ddmmyyyy',1)"><img src="../fileadmin/images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a><br/>
+	<label for="recipients">Empfänger</label><f:form.select size="5" multiple="multiple" property="broadcastarr" id="recipients" options="{customers}" optionValueField="uid" optionLabelField="portalUser.company"/><br/>
+	<label for="submit"> </label><f:form.submit id="submit" value="Save" />
+</f:form>
+
+<h3>Message-List</h3>
+<table>
+<tr>
+	<th>Title</th>
+	<th>Subtitle</th>
+	<th>Text</th>
+	<th>Start</th>
+	<th>End</th>
+	<f:for each="{messages}" as="message"><f:if condition="{message.customer}==0"><tr>
+        <td>{message.title}</td>
+	<td>{message.subtitle}</td>
+	<td>{message.text}</td>
+	<td>{message.start->f:format.date(format:'d.m.Y H:i')}</td>
+	<td>{message.end->f:format.date(format:'d.m.Y H:i')}</td>
+	<td><a href="{f:uri.action(arguments:{editMessage:message})}">Edit</a> <a href="{f:uri.action(action:'deleteMessage',arguments:{message:message})}">Delete</a></td>
+</tr></f:if></f:for>
+</table>
+</f:section>

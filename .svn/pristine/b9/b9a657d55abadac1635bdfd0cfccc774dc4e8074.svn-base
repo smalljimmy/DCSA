@@ -1,0 +1,19 @@
+//
+//  NewsViewController.h
+//  BRS
+//
+//  Created by cgx on 13-10-28.
+//  Copyright (c) 2013年 DouMob. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "NewsCell.h"
+#import "NewsInfoView.h"
+
+@interface NewsViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,NewsInfoDelegate>
+{
+    UITableView *newsTableView;
+    NewsInfoView *newsInfo;//详细内容
+}
+
+@end

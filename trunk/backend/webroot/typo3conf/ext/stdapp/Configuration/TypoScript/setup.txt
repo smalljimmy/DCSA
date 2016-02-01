@@ -1,0 +1,65 @@
+plugin.tx_stdapp {
+	view {
+		templateRootPath = {$plugin.tx_stdapp.view.templateRootPath}
+		partialRootPath = {$plugin.tx_stdapp.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_stdapp.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_stdapp.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+	settings {
+		baseUrl = {$plugin.tx_stdapp.settings.baseUrl}
+		uploadPath = {$plugin.tx_stdapp.settings.uploadPath}
+		version = {$plugin.tx_stdapp.settings.version}
+		senderEmail = {$plugin.tx_stdapp.settings.senderEmail}
+		smtpServer = {$plugin.tx_stdapp.settings.smtpServer}
+		smtpUsername = {$plugin.tx_stdapp.settings.smtpUsername}
+		smtpPassword = {$plugin.tx_stdapp.settings.smtpPassword}
+		apnPem = {$plugin.tx_stdapp.settings.apnPem}
+		apnPemSecret = {$plugin.tx_stdapp.settings.apnPemSecret}
+		apnUrl = {$plugin.tx_stdapp.settings.apnUrl}
+	}
+}
+
+plugin.tx_stdapp._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-stdapp table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-stdapp table th {
+		font-weight:bold;
+	}
+
+	.tx-stdapp table td {
+		vertical-align:top;
+	}
+)
+
+ # Module configuration
+module.tx_stdapp {
+	persistence {
+		storagePid = {$module.tx_stdapp.persistence.storagePid}
+	}
+	view {
+		templateRootPath = {$module.tx_stdapp.view.templateRootPath}
+		partialRootPath = {$module.tx_stdapp.view.partialRootPath}
+		layoutRootPath = {$module.tx_stdapp.view.layoutRootPath}
+	}
+}
+
+module.tx_stdapp.settings < plugin.tx_stdapp.settings

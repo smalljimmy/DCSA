@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-11-08T23:09:55Z" product-name="stdapp">
+		<header/>
+		<body>
+
+			<trans-unit id="identifier.description">
+				<source>identifier</source>
+			</trans-unit>
+			<trans-unit id="company_name.description">
+				<source>companyName</source>
+			</trans-unit>
+			<trans-unit id="contact_email.description">
+				<source>contactEmail</source>
+			</trans-unit>
+			<trans-unit id="enquiry_email.description">
+				<source>enquiryEmail</source>
+			</trans-unit>
+			<trans-unit id="longitude.description">
+				<source>longitude</source>
+			</trans-unit>
+			<trans-unit id="latitude.description">
+				<source>latitude</source>
+			</trans-unit>
+			<trans-unit id="txt_color_header.description">
+				<source>txtColorHeader</source>
+			</trans-unit>
+			<trans-unit id="txt_transparency_header.description">
+				<source>txtTransparencyHeader</source>
+			</trans-unit>
+			<trans-unit id="status.description">
+				<source>status</source>
+			</trans-unit>
+			<trans-unit id="resources.description">
+				<source>resources</source>
+			</trans-unit>
+			<trans-unit id="messages.description">
+				<source>messages</source>
+			</trans-unit>
+			<trans-unit id="subtypes.description">
+				<source>subtypes</source>
+			</trans-unit>
+			<trans-unit id="languages.description">
+				<source>languages</source>
+			</trans-unit>
+			<trans-unit id="default_language.description">
+				<source>defaultLanguage</source>
+			</trans-unit>
+			<trans-unit id="hr_number.description">
+				<source>hrNumber</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,49 @@
+<h3>Betreffzeile hinzufügen</h3>
+
+<f:flashMessages />
+
+<f:form action="update" name="resource" object="{editResource}">
+	<f:form.hidden property="type" value="9"/>
+	<f:form.hidden property="subtype" value="1"/>
+	<label for="title">Betreff</label>
+	<f:form.textfield class="formtext" property="title" id="title"/><br/>
+	<label for="submit">&nbsp;</label>
+	<f:if condition="{editResource.uid}"><f:then><f:form.submit id="submit" value="Ändern"/></f:then>
+	<f:else><f:form.submit id="submit" value="Speichern"/></f:else></f:if>
+</f:form>
+
+<h3>Betreffzeilen</h3>
+<table>
+<tr>
+	<th>Betreff</th>
+	<th>Sort.</th>
+	<th>&nbsp;</th>
+</tr>
+<f:for each="{resources}" as="resource"><tr>
+        <td>{resource.title}</td>
+	<td class="sorting">
+		<f:link.action action="moveDown" arguments="{resource:resource}" class="moveDown" title="eine Position nach unten">
+			&#x25BC;
+		</f:link.action>
+		<f:link.action action="moveUp" arguments="{resource:resource}" class="moveUp" title="eine Position nach oben">
+			&#x25B2;
+		</f:link.action>
+	</td>
+	<td><a href="{f:uri.action(arguments:{editResource:resource})}">Bearb.</a> <a href="{f:uri.action(action:'delete',arguments:{resource:resource})}">Lösch.</a></td>
+</tr></f:for>
+</table>
+
+<h3>Empfangsbestätigung Anfrage</h3>
+
+<f:form action="update"  name="resource" object="{submitMsg}">
+	<f:form.hidden property="type" value="11"/>
+	<f:form.hidden property="subtype" value="1"/>
+	<label for="title2">Titel</label>
+	<f:form.textfield  id="title2" class="formtext" property="title" /><br/>
+	<label for="message">Inhalt</label>
+	<f:form.textarea id="message" property="content" /><br/>
+	<label for="submit2">&nbsp;</label>
+	<f:if condition="{submitMsg.uid}"><f:then><f:form.submit id="submit2" value="Update"/></f:then>
+	<f:else><f:form.submit id="submit2" value="Create new"/></f:else></f:if>
+</f:form>
+

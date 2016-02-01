@@ -1,0 +1,75 @@
+<h3>Angaben bearbeiten</h3>
+
+<f:flashMessages />
+
+<f:render partial="FormErrors" arguments="{object:Customer}"/>
+
+<f:form action="update" name="customer" object="{customer}" >
+<label for="contactEmail">
+	<f:translate key="tx_stdapp_domain_model_customer.contact_email" />
+</label>
+	<f:form.textfield class="formtext" property="contactEmail" /><br />
+<label for="enquiryEmail">
+	<f:translate key="tx_stdapp_domain_model_customer.enquiry_email" />
+</label>
+	<f:form.textfield class="formtext" property="enquiryEmail" /><br />
+<label for="hrNumber">
+	<f:translate key="tx_stdapp_domain_model_customer.hr_number" />
+</label>
+	<f:form.textfield class="formtext" property="hrNumber" /><br />
+<label for="longitude">
+	<f:translate key="tx_stdapp_domain_model_customer.longitude" />
+</label>
+	<f:form.textfield property="longitude" /><br />
+<label for="latitude">
+	<f:translate key="tx_stdapp_domain_model_customer.latitude" />
+</label>
+	<f:form.textfield property="latitude" /><br />
+<!-- <label for="txtColorHeader">
+	<f:translate key="tx_stdapp_domain_model_customer.txt_color_header" />
+</label><br />
+	<f:form.textfield property="txtColorHeader" /><br />
+<label for="txtTransparencyHeader">
+	<f:translate key="tx_stdapp_domain_model_customer.txt_transparency_header" />
+</label><br />
+	<f:form.textfield property="txtTransparencyHeader" /><br />
+<label for="status">
+	<f:translate key="tx_stdapp_domain_model_customer.status" />
+</label><br />
+	<f:form.textfield property="status" /><br /> -->
+	<label for="submit">&nbsp;</label>
+	<f:form.submit id="submit" value="Speichern" />
+</f:form>
+
+<f:form action="updateUser" name="feuser" object="{feuser}" >
+<label for="companyName"><f:translate key="tx_stdapp_domain_model_customer.company_name" /></label>
+        <f:form.textfield class="formtext" property="company" disabled="disabled"/><br />
+<label for="address">Addresse</label>
+	<f:form.textfield class="formtext" property="address" disabled="disabled"/><br />
+<label for="zip">PLZ</label>
+	<f:form.textfield class="formtext" property="zip" disabled="disabled"/><br />
+<label for="city">Ort</label>
+	<f:form.textfield class="formtext" property="city" disabled="disabled"/><br />
+<label for="telephone">Telefon</label>
+	<f:form.textfield property="telephone" disabled="disabled"/><br />
+<label for="fax">Fax</label>
+	<f:form.textfield property="fax" disabled="disabled"/><br />
+<label for="www">WWW</label>
+	<f:form.textfield property="www" disabled="disabled"/><br />
+	<label for="submit2">&nbsp;</label>
+	<f:form.submit id="submit2" value="Speichern" disabled="disabled"/>
+</f:form>
+
+<h3>Empfangsbestätigung Kontakanfrage</h3>
+
+<f:form action="updateSubmitMsg"  name="resource" object="{submitMsg}">
+	<f:form.hidden property="type" value="10"/>
+	<f:form.hidden property="subtype" value="1"/>
+	<label for="title">Titel</label>
+	<f:form.textfield class="formtext" id="title" property="title" /><br/>
+	<label for="message">Inhalt</label>
+	<f:form.textarea id="message" property="content" /><br/>
+	<label for="submit3">&nbsp;</label>
+	<f:if condition="{submitMsg.uid}"><f:then><f:form.submit id="submit3" value="Ändern"/></f:then>
+	<f:else><f:form.submit id="submit3" value="Speichern"/></f:else></f:if>
+</f:form>

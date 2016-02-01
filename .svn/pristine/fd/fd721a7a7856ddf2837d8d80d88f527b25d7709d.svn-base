@@ -1,0 +1,48 @@
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<h1>Listing for Resource</h1>
+
+<f:flashMessages />
+
+<table  class="tx_stdapp" >
+	<tr>
+		<th><f:translate key="tx_stdapp_domain_model_resource.title" /></th>
+		<th><f:translate key="tx_stdapp_domain_model_resource.subtype" /></th>
+		<th><f:translate key="tx_stdapp_domain_model_resource.url" /></th>
+		<th><f:translate key="tx_stdapp_domain_model_resource.path" /></th>
+		<th><f:translate key="tx_stdapp_domain_model_resource.content" /></th>
+		<th><f:translate key="tx_stdapp_domain_model_resource.sort" /></th>
+		<th><f:translate key="tx_stdapp_domain_model_resource.disabled" /></th>
+		<th> </th>
+		<th> </th>
+	</tr>
+
+	<f:for each="{resources}" as="resource">
+		<tr>
+			<td><f:link.action action="show" arguments="{resource : resource}"> {resource.title}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{resource : resource}"> {resource.subtype}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{resource : resource}"> {resource.url}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{resource : resource}"> {resource.path}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{resource : resource}"> {resource.content}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{resource : resource}"> {resource.sort}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{resource : resource}"> {resource.disabled}</f:link.action></td>
+			<td><f:link.action action="edit" arguments="{resource : resource}">Edit</f:link.action></td>
+			<td><f:link.action action="delete" arguments="{resource : resource}">Delete</f:link.action></td>
+		</tr>
+	</f:for>
+</table>
+
+<f:link.action action="new">New Resource</f:link.action>
+</f:section>

@@ -1,0 +1,38 @@
+<f:layout name="Default" />
+
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+<h1>Menü-Namen</h1>
+
+<f:flashMessages />
+
+<f:render partial="FormErrors" />
+
+<f:form id="updateMenus" action="updateMenus">
+<table>
+	<tr>
+		<th></th>
+		<f:for each="{resourceTypes}" as="resourcetype"><th>{resourcetype.name}</th></f:for>
+	</tr>
+	
+	<f:for each="{customerTypenames}" key="customerUid" as="typenames"><tr>
+		<th>{typenames.customer}</th>
+		<f:for each="{typenames.names}" key="typeUid" as="typename"><td>
+			<f:form.textfield class="" name="customerTypenames[{customerUid}][{typeUid}]" value="{typename}"/>
+		</td></f:for>
+		<td><f:form.submit name="submit[{customerUid}]" value="Save" /></td>
+	</tr></f:for>
+</table>
+</f:form>
+</f:section>

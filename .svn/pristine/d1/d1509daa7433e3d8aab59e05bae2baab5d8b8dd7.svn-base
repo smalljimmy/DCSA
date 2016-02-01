@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_img2"
+    android:orientation="vertical" >
+	<include layout="@layout/share_header"/> 
+
+	<com.handmark.pulltorefresh.library.PullToRefreshScrollView
+	    android:id="@+id/refresh_scroll_view"
+	    android:fadingEdgeLength="0dp"
+	    android:overScrollMode="never"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent">	
+	    <LinearLayout android:id="@+id/content_container"
+	        android:orientation="vertical"
+	        android:padding="10dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"/>
+	 </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+	
+	<!--
+	<ScrollView android:fadingEdgeLength="0dp"
+	    android:overScrollMode="never"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent">
+	    <LinearLayout android:id="@+id/content_container"
+	        android:orientation="vertical"
+	        android:padding="10dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content">
+	        <LinearLayout android:orientation="horizontal"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content">
+	            <ImageView android:src="@drawable/photo_03"
+	                android:contentDescription="@string/image_content_escription"
+	                android:scaleType="fitCenter"
+	                android:layout_weight="1.0"
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"/>
+	            <ImageView android:src="@drawable/photo_03"
+	                android:contentDescription="@string/image_content_escription"
+	                android:scaleType="fitCenter"
+	                android:layout_weight="1.0"
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"/>	            
+	        </LinearLayout>
+	        <LinearLayout android:orientation="horizontal"
+	            android:layout_marginTop="10dp"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content">
+	            <ImageView android:src="@drawable/photo_03"
+	                android:contentDescription="@string/image_content_escription"
+	                android:scaleType="fitCenter"
+	                android:layout_weight="1.0"
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"/>
+	            <ImageView android:src="@drawable/photo_03"
+	                android:contentDescription="@string/image_content_escription"
+	                android:scaleType="fitCenter"
+	                android:layout_weight="1.0"
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"/>	            
+	        </LinearLayout>	
+	                		              
+	    </LinearLayout>
+	</ScrollView>
+	-->	
+</LinearLayout>

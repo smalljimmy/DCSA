@@ -1,0 +1,124 @@
+package ch.goco.service;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.TimeZone;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import ch.goco.config.LocalDataManager;
+import ch.goco.entity.Message;
+import ch.goco.ui.MessageActivity;
+import ch.goco.webservice.WebServiceUtils;
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+import android.util.Log;
+import app.fastdev.util.DateUtils;
+import app.fastdev.util.NotificationUtils;
+
+public class MessageService extends Service implements Runnable{
+
+	private ScheduledExecutorService executor;
+	
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		executor = Executors.newSingleThreadScheduledExecutor();
+		executor.scheduleWithFixedDelay(this, 10, 5*60, TimeUnit.SECONDS);
+	}
+	
+	@Override
+	public IBinder onBind(Intent intent) {
+		return null;
+	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		executor.shutdownNow();
+	}
+
+	@Override
+	public void run() {
+		JSONArray ja = WebServiceUtils.getMessages();
+		if(ja == null || ja.length() == 0) return;
+		List<Message> itemList = new ArrayList<Message>(ja.length());
+		JSONObject obj;
+		Message news;
+		String date;
+		String timezone;
+		Date now = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+		for(int i=0,j=ja.length();i<j;i++){
+			obj = ja.optJSONObject(i);
+			news = new Message();
+			news.setId(obj.optInt("uid"));
+			news.setTitle(obj.optString("title"));
+			news.setSubtitle(obj.optString("subtitle"));
+			news.setText(obj.optString("text",""));
+			
+			date = obj.optJSONObject("start").optString("date");
+			timezone = obj.optJSONObject("start").optString("timezone");
+			format.setTimeZone(TimeZone.getTimeZone("GMT"+timezone));
+			try {
+				news.setStart(format.parse(date));
+			} catch (ParseException e) {
+				e.printStackTrace();
+				continue;
+			}
+			
+			date = obj.optJSONObject("end").optString("date");
+			timezone = obj.optJSONObject("end").optString("timezone");
+			format.setTimeZone(TimeZone.getTimeZone("GMT"+timezone));
+			try {
+				news.setEnd(format.parse(date));
+			} catch (ParseException e) {
+				e.printStackTrace();
+				continue;
+			}
+			
+			if(DateUtils.between(now, news.getStart(), news.getEnd())){
+				itemList.add(news);
+			}
+		}
+		//no news
+		if(itemList.isEmpty()) {
+			Log.d(MessageService.class.getName(), "no messages");
+			return;
+		}
+		
+		Set<Integer> messageIds = LocalDataManager.getLocalMessageIds();
+		if(messageIds == null) messageIds = new HashSet<Integer>();
+		
+		List<Message> newItemList = new ArrayList<Message>();
+		for(Message n:itemList){
+			if(!messageIds.contains(n.getId())){
+				newItemList.add(n);
+			}
+		}
+		//all already show
+		if(newItemList.isEmpty()) {
+			Log.d(MessageService.class.getName(), "no newest message");
+			return;
+		}
+		
+		LocalDataManager.setLocalMessageList(newItemList);
+		
+		Intent intent = new Intent(this, MessageActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		NotificationUtils.updateIntentNotification(this, 20131222, newItemList.get(0).getTitle(), intent);
+		Log.d(MessageService.class.getName(), "notify message, size: "+newItemList.size());
+	}
+
+}

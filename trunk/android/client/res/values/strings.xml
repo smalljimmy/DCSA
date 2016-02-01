@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Company custom -->
+    <string name="app_name">dcsa</string>
+    
+    <!-- Home action icon name -->
+    <string name="home_icon_text_1">FORM</string>
+    <string name="home_icon_text_2">PHOTO</string>
+    <string name="home_icon_text_3">ABOUT</string>
+    <string name="home_icon_text_4">DOCS</string>
+    <string name="home_icon_text_5">NEWS</string>
+    <string name="home_icon_text_6">MAP</string>
+    <string name="home_icon_text_7">Offer</string>
+    
+    <!-- System configuration -->
+    <string name="loading">Loading</string>
+    <string name="app_init_failed">App Init Failed!</string>
+    <string name="no_network">NO NETWORK!</string>
+    <string name="app_offline">APP OFFLINE!</string>
+    <string name="image_content_escription"></string>   
+    <string name="label_email_address">Email-Adresse</string> 
+    <string name="label_content">Content</string> 
+    <string name="label_email_title">Title</string> 
+    <string name="button_text_submit">Submit</string> 
+    <string name="title_is_empty">Title is required!</string> 
+    <string name="email_is_empty">Email is required!</string> 
+    <string name="content_is_empty">Content is required!</string> 
+    <string name="download_failed">Download Failed!</string> 
+    <string name="download_complete">Download Complete!</string> 
+    <string name="submit_failed">Submit Failed!</string>
+    <string name="no_content">No Content!</string>
+    
+    <string name="submit_duplicate_content">Do not submit duplicate content!</string>
+    <string name="get_rss_data_failed">Get RSS data Failed!</string>
+    <string name="download_success">Download Success!</string>
+    <string name="downloading">Downloading&#8230;</string>
+    
+    <string name="telephone">Telephone</string> 
+    <string name="fax">Fax</string>
+    <string name="email">Email</string>
+    <string name="hr_number">Hr Number</string>
+    <string name="web_site">WebSite</string>
+    
+    <string name="subject_line_contact">Kontaktanfrage via Mobile App</string>
+    <string name="subject_line_request">Angebotsanfrage via Mobile App</string>
+</resources>

@@ -1,0 +1,21 @@
+//
+//  BaseViewController.h
+//  BRS
+//
+//  Created by cgx on 13-10-24.
+//  Copyright (c) 2013年 DouMob. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "LanguageView.h"//语言设置视图
+
+@interface BaseViewController : UIViewController<LanguageSelectDelegate>
+{
+    LanguageView *languageView;
+    UIImageView *navImageView;//导航栏视图
+    UIButton *itemButton;//语言设置按钮
+}
+@property(nonatomic,retain)UIImageView *navImageView;//导航栏视图
+-(void)settingLanguage;
+
+@end

@@ -1,0 +1,37 @@
+<f:be.container addCssFile="../fileadmin/templates/css/backend.css" addJsFile="../fileadmin/templates/js/datetimepicker.js">
+	<div class="typo3-fullDoc">
+		<div id="typo3-docheader">
+			<div id="typo3-docheader-row1">
+				<div class="buttonsleft">
+
+				</div>
+				<div class="buttonsright">
+					<f:be.buttons.shortcut />
+				</div>
+			</div>
+			<div id="typo3-docheader-row2">
+				<div class="docheader-row2-left">
+					<f:be.buttons.csh />
+					<f:be.menus.actionMenu>
+						<f:be.menus.actionMenuItem label="Kunden" controller="" action="list" />
+						<!-- <f:comment><f:be.menus.actionMenuItem label="Create new Customer" action="new" controller="Customer" /></f:comment> -->
+						<f:be.menus.actionMenuItem label="Nachrichten" action="editMessage" controller="Backend" />
+						<f:be.menus.actionMenuItem label="Banner" action="editBanner" controller="Backend" />
+						<f:be.menus.actionMenuItem label="Menü-Namen" action="editMenus" controller="Backend" />
+					</f:be.menus.actionMenu>
+				</div>
+				<div class="docheader-row2-right">
+					<f:be.pagePath />
+					<f:be.pageInfo />
+				</div>
+			</div>
+
+		</div>
+		<div id="typo3-docbody">
+			<div id="typo3-inner-docbody">
+				<f:flashMessages renderMode="div" />
+				<f:render section="content" />
+			</div>
+		</div>
+	</div>
+</f:be.container>

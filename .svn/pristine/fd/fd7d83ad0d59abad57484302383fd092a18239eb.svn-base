@@ -1,0 +1,13 @@
+<html>
+<head>
+<title>Seitentitel</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<!-- ###DOCUMENT_BODY### START-->
+<div id="Page">
+    <!-- ###CONTENT### START--> <!-- ###CONTENT### END-->
+</div>
+<!-- ###DOCUMENT_BODY### END-->
+</body>
+</html>

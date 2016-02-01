@@ -1,0 +1,56 @@
+<T3DataStructure>
+	<sheets>
+	<sDEF>
+		<ROOT>
+			<TCEforms>
+				<sheetTitle>Verhalten</sheetTitle>
+			</TCEforms>
+			<type>array</type>
+			<el>
+			<switchableControllerActions>
+				<TCEforms>
+					<label>Standardaktion des Plugins</label>
+					<config>
+						<type>select</type>
+						<items>
+							<numIndex index="0">
+								<numIndex index="0">News</numIndex>
+								<numIndex index="1">News->edit;News->update;News->delete</numIndex>
+							</numIndex>
+							<numIndex index="1">
+								<numIndex index="0">Messages</numIndex>
+								<numIndex index="1">Message->edit;Message->update;Message->delete</numIndex>
+							</numIndex>
+                                                        <numIndex index="2">
+                                                                <numIndex index="0">Info</numIndex>
+                                                                <numIndex index="1">Info->edit;Info->update;Info->delete</numIndex>
+                                                        </numIndex>
+                                                        <numIndex index="3">
+                                                                <numIndex index="0">Images</numIndex>
+                                                                <numIndex index="1">Image->edit;Image->update;Image->delete;Image->moveUp;Image->moveDown</numIndex>
+                                                        </numIndex>
+                                                        <numIndex index="4">
+                                                                <numIndex index="0">Documents</numIndex>
+                                                                <numIndex index="1">Document->edit;Document->update;Document->delete;Document->moveUp;Document->moveDown</numIndex>
+                                                        </numIndex>
+                                                        <numIndex index="5">
+                                                                <numIndex index="0">Customer</numIndex>
+                                                                <numIndex index="1">Customer->edit;Customer->update;Customer->updateSubmitMsg</numIndex>
+                                                        </numIndex>
+                                                        <numIndex index="6">
+                                                                <numIndex index="0">CustomerSubtype</numIndex>
+                                                                <numIndex index="1">CustomerSubtype->edit;CustomerSubtype->update</numIndex>
+                                                        </numIndex>
+                                                        <numIndex index="7">
+                                                                <numIndex index="0">Offer Subjects</numIndex>
+                                                                <numIndex index="1">Offer->edit;Offer->update;Offer->delete;Offer->moveUp;Offer->moveDown</numIndex>
+                                                        </numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</switchableControllerActions>
+			</el>
+		</ROOT>
+	</sDEF>
+	</sheets>
+</T3DataStructure>

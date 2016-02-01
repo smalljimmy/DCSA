@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_img2"
+    android:orientation="vertical" >
+	<include layout="@layout/share_header"/> 
+
+    <ScrollView android:scrollbars="none"
+        android:fadingEdge="none"
+        android:fadingEdgeLength="0dp"
+        android:overScrollMode="never"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical"
+            android:paddingTop="140dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView android:text="@string/label_email_address"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/default_text_size"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+                <EditText android:id="@+id/email" 
+                    android:hint=""
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView android:text="@string/label_email_title"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/default_text_size"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+                <Spinner android:id="@+id/spinner"
+                    android:background="@android:drawable/editbox_background_normal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>            
+            <LinearLayout android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView android:text="@string/label_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/default_text_size"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+                <EditText android:id="@+id/content" 
+                    android:hint=""
+                    android:lines="5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>      
+            
+            <Button android:id="@+id/btn_submit"
+                android:text="@string/button_text_submit"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_btn"       
+                android:layout_gravity="center_horizontal"         
+                android:layout_margin="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

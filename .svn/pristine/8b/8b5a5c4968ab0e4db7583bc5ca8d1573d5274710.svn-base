@@ -1,0 +1,66 @@
+//
+//  LanguageView.m
+//  BRS
+//
+//  Created by cgx on 13-10-15.
+//  Copyright (c) 2013年 DouMob. All rights reserved.
+//
+
+#import "LanguageView.h"
+
+@implementation LanguageView
+@synthesize delegate;
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        // Initialization code
+        self.backgroundColor=[UIColor clearColor];
+        UIView *contentView=[[UIView alloc] initWithFrame:CGRectMake(240, 0, 120, 416+(iPhone5?88:0))];
+        contentView.backgroundColor=[UIColor blackColor];
+        contentView.alpha=0.3;
+        [self addSubview:contentView];
+        
+        
+        NSArray *numsArray=[NSArray arrayWithObjects:@"返回",@"中文",@"英文",@"日文", nil];
+        
+        for (int i=0; i<numsArray.count; i++)
+        {
+            UIButton *button=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+            button.frame=CGRectMake(250, 40+100*i, 60, 60);
+            [button setTitle:[numsArray objectAtIndex:i] forState:UIControlStateNormal];
+            [button setTag:i+1];
+            [button addTarget:self action:@selector(selectTag:) forControlEvents:UIControlEventTouchUpInside];
+            
+            [self addSubview:button];
+        }
+    }
+    return self;
+}
+
+//选择哪一种语言
+-(void)selectTag:(id)sender
+{
+    NSInteger tag=[sender tag];
+    
+    if ([delegate respondsToSelector:@selector(returnSelectLanguage:)])
+    {
+        [delegate returnSelectLanguage:tag];//返回选择的Tag值
+    }
+   
+}
+
+
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+}
+*/
+
+@end

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <FrameLayout android:id="@+id/home_banner"
+        android:layout_width="fill_parent"
+        android:layout_height="160dp">
+        <android.support.v4.view.ViewPager 
+            android:id="@+id/viewpager"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"/>
+        <include layout="@layout/share_header"/>
+    </FrameLayout>
+    
+	<LinearLayout android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent">
+	    <LinearLayout android:baselineAligned="false"
+	        android:orientation="horizontal"
+	        android:layout_width="fill_parent"
+	        android:layout_weight="1.0"
+	        android:layout_height="0dp">
+	        <LinearLayout android:id="@+id/action_docs_parent"
+	            android:orientation="vertical"
+	            android:gravity="center"
+	            android:background="@drawable/index_bg3"
+	            android:layout_weight="1"
+	            android:layout_width="0dp"
+	            android:layout_height="fill_parent">
+	            <ImageView android:id="@+id/action_docs"
+	                android:src="@drawable/index_ico4"
+	                android:scaleType="fitCenter"
+	                android:contentDescription="@string/image_content_escription"
+	                android:layout_width="46dp"
+	                android:layout_height="46dp"/>
+	            <TextView android:id="@+id/home_icon_text_1"
+	                android:text="@string/home_icon_text_1"
+	                android:textColor="@android:color/black"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"/>
+	        </LinearLayout>
+	        <LinearLayout android:id="@+id/action_photo_parent"
+	            android:orientation="vertical"
+	            android:gravity="center"
+	            android:background="@drawable/index_bg3"
+	            android:layout_weight="1"
+	            android:layout_width="0dp"
+	            android:layout_height="fill_parent">
+	            <ImageView android:id="@+id/action_photo"
+	                android:src="@drawable/index_ico2"
+	                android:contentDescription="@string/image_content_escription"
+	                android:scaleType="fitCenter"
+	                android:layout_width="46dp"
+	                android:layout_height="46dp"/>
+	            <TextView android:id="@+id/home_icon_text_2"
+	                android:text="@string/home_icon_text_2"
+	                android:textColor="@android:color/black"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"/>
+	        </LinearLayout>	  
+	        <LinearLayout android:id="@+id/action_about_parent"
+	            android:orientation="vertical"
+	            android:gravity="center"
+	            android:background="@drawable/index_bg3"
+	            android:layout_weight="1"
+	            android:layout_width="0dp"
+	            android:layout_height="fill_parent">
+	            <ImageView android:id="@+id/action_about"
+	                android:src="@drawable/index_ico10"
+	                android:scaleType="fitCenter"
+	                android:contentDescription="@string/image_content_escription"
+	                android:layout_width="46dp"
+	                android:layout_height="46dp"/>
+	            <TextView android:id="@+id/home_icon_text_3"
+	                android:text="@string/home_icon_text_3"
+	                android:textColor="@android:color/black"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"/>
+	        </LinearLayout>	 	             
+	    </LinearLayout>
+	    <LinearLayout android:baselineAligned="false"
+	        android:orientation="horizontal"
+	        android:layout_width="fill_parent"
+	        android:layout_weight="1.0"
+	        android:layout_height="0dp">
+	        <LinearLayout android:id="@+id/action_form_parent"
+	            android:orientation="vertical"
+	            android:gravity="center"
+	            android:background="@drawable/index_bg3"
+	            android:layout_weight="1"
+	            android:layout_width="0dp"
+	            android:layout_height="fill_parent">
+	            <ImageView android:id="@+id/action_form"
+	                android:src="@drawable/index_ico1"
+	                android:scaleType="fitCenter"
+	                android:contentDescription="@string/image_content_escription"
+	                android:layout_width="46dp"
+	                android:layout_height="46dp"/>
+	            <TextView android:id="@+id/home_icon_text_4"
+	                android:text="@string/home_icon_text_4"
+	                android:textColor="@android:color/black"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"/>
+	        </LinearLayout>
+	        <LinearLayout android:id="@+id/action_news_parent"
+	            android:orientation="vertical"
+	            android:gravity="center"
+	            android:background="@drawable/index_bg3"
+	            android:layout_weight="1"
+	            android:layout_width="0dp"
+	            android:layout_height="fill_parent">
+	            <ImageView android:id="@+id/action_news"
+	                android:src="@drawable/index_ico5"
+	                android:scaleType="fitCenter"
+	                android:contentDescription="@string/image_content_escription"
+	                android:layout_width="46dp"
+	                android:layout_height="46dp"/>
+	            <TextView android:id="@+id/home_icon_text_5"
+	                android:text="@string/home_icon_text_5"
+	                android:textColor="@android:color/black"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"/>
+	        </LinearLayout>	   
+	        <LinearLayout android:id="@+id/action_map_parent"
+	            android:orientation="vertical"
+	            android:gravity="center"
+	            android:background="@drawable/index_bg3"
+	            android:layout_weight="1"
+	            android:layout_width="0dp"
+	            android:layout_height="fill_parent">
+	            <ImageView 
+	                android:id="@+id/action_map"
+	                android:src="@drawable/index_ico6"
+	                android:scaleType="fitCenter"
+	                android:contentDescription="@string/image_content_escription"
+	                android:layout_width="46dp"
+	                android:layout_height="46dp"/>
+	            <TextView android:id="@+id/home_icon_text_6"
+	                android:text="@string/home_icon_text_6"
+	                android:textColor="@android:color/black"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"/>
+	        </LinearLayout>	 	             
+	    </LinearLayout>	   
+	    
+	    <LinearLayout android:baselineAligned="false"
+	        android:orientation="horizontal"
+	        android:layout_width="fill_parent"
+	        android:layout_weight="1.0"
+	        android:layout_height="0dp">
+	        <LinearLayout android:id="@+id/action_shopcart_parent"
+	            android:orientation="vertical"
+	            android:gravity="center"
+	            android:background="@drawable/index_bg3"
+	            android:layout_weight="1"
+	            android:layout_width="0dp"
+	            android:layout_height="fill_parent">
+	            <ImageView 
+	                android:id="@+id/action_shopcart"
+	                android:src="@drawable/index_ico7"
+	                android:scaleType="fitCenter"
+	                android:contentDescription="@string/image_content_escription"
+	                android:layout_width="46dp"
+	                android:layout_height="46dp"/>
+	            <TextView android:id="@+id/home_icon_text_7"
+	                android:text="@string/home_icon_text_7"
+	                android:textColor="@android:color/black"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"/>
+	        </LinearLayout>
+	        <LinearLayout android:orientation="vertical"
+	            android:gravity="center"
+	            android:background="@drawable/index_bg3"
+	            android:layout_weight="1"
+	            android:layout_width="0dp"
+	            android:layout_height="fill_parent">
+	        </LinearLayout>	   
+	        <LinearLayout android:orientation="vertical"
+	            android:gravity="center"
+	            android:background="@drawable/index_bg3"
+	            android:layout_weight="1"
+	            android:layout_width="0dp"
+	            android:layout_height="fill_parent">
+	        </LinearLayout>	 	             
+	    </LinearLayout>		    
+	</LinearLayout>
+</LinearLayout>

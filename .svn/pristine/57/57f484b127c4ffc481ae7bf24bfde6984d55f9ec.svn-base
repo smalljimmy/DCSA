@@ -1,0 +1,125 @@
+package ch.goco.config;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import ch.goco.company.R;
+import ch.goco.entity.Language;
+
+public class Constants {
+	
+	//================================================================
+	//Global 
+	//================================================================	
+	public static final String DEFAULT_CHARSET = "UTF-8";
+	public static final String LOG_TAG = "GOCO";
+	public static final int REQUEST_TIMEOUT = 10000;
+	public static final String SDCARD_DIR_DOCS = "/goco/docs";
+	public static final String EMAIL_XOR_KEY = "gordiancode";
+	
+	//================================================================
+	//WEB SERVICE API 
+	//================================================================	
+	public static final String WS_SERVER_URL_BASE = "http://stdapp.dataforge.ch";
+	public static final String WS_SERVER_URL_MESSAGES = WS_SERVER_URL_BASE+"/message/#IDENTIFIER#/";
+	public static final String WS_SERVER_URL_RESOURCES = WS_SERVER_URL_BASE+"/resource/#IDENTIFIER#/";
+	public static final String WS_SERVER_URL_CONFIG = WS_SERVER_URL_BASE+"/config/#IDENTIFIER#/";
+	
+	public static final String WS_SERVER_RESOURCE_TYPE_DOCUMENT = "1";
+	public static final String WS_SERVER_RESOURCE_TYPE_IMAGE = "2";
+	public static final String WS_SERVER_RESOURCE_TYPE_INFO = "3";
+	public static final String WS_SERVER_RESOURCE_TYPE_CONTACT = "4";
+	public static final String WS_SERVER_RESOURCE_TYPE_LEGAL = "5";
+	public static final String WS_SERVER_RESOURCE_TYPE_NEWS = "6";
+	public static final String WS_SERVER_RESOURCE_TYPE_MESSAGES = "7";
+	public static final String WS_SERVER_RESOURCE_TYPE_BANNERS = "12";
+
+	//================================================================
+	//Assets 
+	//================================================================	
+	public static final String BASE_CONFIG_NAME = "config.xml";
+	public static final String BASE_CONFIG_KEY_IDENTIFIER = "identifier";
+	
+	//================================================================
+	//SharedPreferences
+	//================================================================
+	public static final String SP_BACKEND_CONFIG_INIT = "sp_bc_init";
+	public static final String SP_BACKEND_CONFIG_FILE = "sp_bc_file";
+	public static final String SP_BACKEND_CONFIG_VERSION = "sp_bc_version";
+	public static final String SP_BACKEND_CONFIG_STATUS = "sp_bc_status";
+	public static final String SP_BACKEND_CONFIG_OFFER_EMAIL = "sp_bc_offer_email";
+	public static final String SP_BACKEND_CONFIG_SENDER_EMAIL = "sp_bc_sender_email";
+	public static final String SP_BACKEND_CONFIG_LONGITUDE = "sp_bc_longitude";
+	public static final String SP_BACKEND_CONFIG_LATITUDE = "sp_bc_latitude";
+	public static final String SP_BACKEND_CONFIG_TEXT_COLOR_HEADER = "sp_bc_text_color_header";
+	public static final String SP_BACKEND_CONFIG_TEXT_TRANSPARENCY_HEADER = "sp_bc_text_transparency_header";
+	public static final String SP_BACKEND_CONFIG_BASE_URL = "sp_bc_base_url";
+	public static final String SP_BACKEND_CONFIG_IMAGE_SPLASH = "sp_bc_image_splash";
+	public static final String SP_BACKEND_CONFIG_IMAGE_HEADER = "sp_bc_image_header";
+	public static final String SP_BACKEND_CONFIG_IMAGE_BACK = "sp_bc_image_back";
+	public static final String SP_BACKEND_CONFIG_IMAGE_MENU = "sp_bc_image_menu";
+	public static final String SP_BACKEND_CONFIG_IMAGE_LOGO = "sp_bc_image_logo";
+	public static final String SP_BACKEND_CONFIG_SMTP_SERVER = "sp_bc_smtp_server";
+	public static final String SP_BACKEND_CONFIG_SMTP_USERNAME = "sp_bc_smtp_username";
+	public static final String SP_BACKEND_CONFIG_SMTP_PASSWORD = "sp_bc_smtp_password";
+	public static final String SP_BACKEND_CONFIG_LANGUAGE_DEFAULT_ID = "sp_bc_language_default_id";
+	public static final String SP_BACKEND_CONFIG_LANGUAGE_LIST = "sp_bc_language_list";
+	public static final String SP_BACKEND_CONFIG_SETUP = "sp_bc_setup";
+	public static final String SP_BACKEND_CONFIG_OFFER_SUBJECT = "sp_bc_offer_subject";
+	public static final String SP_BACKEND_CONFIG_ICON_ITEM_NAME = "sp_bc_icon_item_name";
+	public static final String SP_BACKEND_CONFIG_CONTACT_SUBMIT_MSG = "sp_bc_contact_submit_msg";
+	public static final String SP_BACKEND_CONFIG_OFFER_SUBMIT_MSG = "sp_bc_offer_submit_msg";
+	
+	public static final String SP_LOCAL_LANGUAGE_ID = "sp_lc_language_id";
+	public static final String SP_LOCAL_LANGUAGE_CODE = "sp_lc_language_code";
+	public static final String SP_LOCAL_LAST_MESSAGE_ID = "sp_lc_last_message_id";
+	
+	//================================================================
+	//Serialization Data 
+	//================================================================
+	public static final String SER_KEY_DIR = "cache";
+	public static final String SER_KEY_PHOTO = "photo";
+	public static final String SER_KEY_DOCS = "docs";
+	public static final String SER_KEY_MESSAGE = "message";
+	public static final String SER_KEY_NEWS = "news";
+	public static final String SER_KEY_NEWS_IGNORE_IDS = "news_ingore_ids";
+	public static final String SER_KEY_INFO = "info";
+	public static final String SER_KEY_COMPANY = "company";
+	public static final String SER_KEY_MESSAGE_ID = "message_id";
+	public static final String SER_KEY_BANNER = "banner";
+	
+	//================================================================
+	//Metadata 
+	//================================================================
+	public static final int SP_BACKEND_CONFIG_STATUS_OFFLINE = 0;
+	public static final int SP_BACKEND_CONFIG_STATUS_ONLINE = 1;
+	
+	//================================================================
+	//SDCard
+	//================================================================	
+	public static final String CACHE_DATA_FILE_NAME_LANGUAGE = "cd_fn_language";
+	public static final String CACHE_DATA_FILE_NAME_SETUP = "cd_fn_setup";
+	public static final String CACHE_DATA_FILE_NAME_OFFER_SUBJECT = "cd_fn_offer_subject";
+	
+	//================================================================
+	//Internal Language
+	//================================================================	
+	public static final List<Language> INTERNAL_LANGUAGE_LIST = new ArrayList<Language>();
+	static{
+		Language item = null;
+		item = new Language(-1,"","Home",R.drawable.icon_home);
+		INTERNAL_LANGUAGE_LIST.add(item);
+		
+		item = new Language(1,"en_US","English",R.drawable.icon_lang1);
+		INTERNAL_LANGUAGE_LIST.add(item);
+		
+		item = new Language(2,"de_DE","Deutschland",R.drawable.icon_lang2);
+		INTERNAL_LANGUAGE_LIST.add(item);
+		
+		item = new Language(3,"it_IT","Italia",R.drawable.icon_lang3);
+		INTERNAL_LANGUAGE_LIST.add(item);
+		
+		item = new Language(4,"fr_FR","France",R.drawable.icon_lang4);
+		INTERNAL_LANGUAGE_LIST.add(item);
+	}
+}

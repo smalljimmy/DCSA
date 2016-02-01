@@ -1,0 +1,182 @@
+//
+//  BaseViewController.m
+//  BRS
+//
+//  Created by cgx on 13-10-24.
+//  Copyright (c) 2013年 DouMob. All rights reserved.
+//
+
+#import "BaseViewController.h"
+
+@interface BaseViewController ()
+
+@end
+
+@implementation BaseViewController
+@synthesize navImageView;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+-(void)settingPage
+{
+    [languageView removeFromSuperview];
+
+    languageView=[[LanguageView alloc]initWithFrame:CGRectMake(WIDTH, NAVBARHEIGHT,WIDTH, 416+(iPhone5?88:0))];
+    languageView.delegate=self;
+    [self.view addSubview:languageView];
+    
+
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+   // NSLog(@"base");
+    self.view.backgroundColor=[UIColor lightGrayColor];
+    
+    UIImageView *bgImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 460+(iPhone5?88:0))];
+    bgImageView.image=IMAGE(@"bg");
+    [self.view addSubview:bgImageView];
+    [bgImageView release];
+    
+    navImageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0,WIDTH, NAVBARHEIGHT)];
+    navImageView.image=IMAGE(@"nav");
+    [self.view addSubview:navImageView];
+    [navImageView release];
+    
+    UIImageView *logoImageView=[[UIImageView alloc]initWithFrame:CGRectMake(60, 8, 50, 28)];
+    logoImageView.image=IMAGE(@"icon_logo");
+    [self.view addSubview:logoImageView];
+    [logoImageView release];
+    
+    UIButton *backButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame=CGRectMake(10, 10, 25, 25);
+    [backButton setImage:IMAGE(@"left_button") forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backPreviousPage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:backButton];
+    
+    itemButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    itemButton.frame=CGRectMake(285,10, 25, 25);
+    [itemButton setImage:IMAGE(@"right_button") forState:UIControlStateNormal];
+    [itemButton addTarget:self action:@selector(settingLanguage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:itemButton];
+
+}
+
+//退出程序
+-(void)backPreviousPage
+{
+ 
+    exit(0);
+}
+
+-(void)settingLanguage
+{
+
+    [self settingPage];//设置显示的页面
+    
+    [UIView animateWithDuration:.5 animations:^{
+        languageView.frame = CGRectMake(0, NAVBARHEIGHT,WIDTH, 416+(iPhone5?88:0));
+    }completion:^(BOOL finished) {
+        itemButton.enabled=NO;
+    }];
+    
+
+}
+
+
+
+
+
+#pragma -
+#pragma - LanguageSelectDelegate
+//实现LanguageSelectDelegate的代理委托
+-(void)returnSelectLanguage:(int)tag
+{
+    NSLog(@"语言tag::%d",tag);
+    switch (tag)
+    {
+        case 1:
+        {
+            //返回
+            break;
+        }
+        case 2:
+        {
+            //中文
+           // [[NSUserDefaults standardUserDefaults]setObject:@"zh-Hans" forKey:@"languageChoose"];//选择中文
+            //[LanguageController setLanguage];//读取本地化语言
+            //[self settingPage];
+            
+            
+            break;
+        }
+        case 3:
+        {
+            //英文
+            
+            //[[NSUserDefaults standardUserDefaults]setObject:@"en" forKey:@"languageChoose"];//选择英文
+            //[LanguageController setLanguage];//读取本地化语言
+            //[self settingPage];
+            
+            
+            
+            break;
+        }
+        case 4:
+        {
+            //日文
+            break;
+        }
+            
+            
+        default:
+            break;
+    }
+    
+    [UIView animateWithDuration:.5 animations:^{
+        languageView.frame = CGRectMake(WIDTH, NAVBARHEIGHT,WIDTH, 416+(iPhone5?88:0));
+    }completion:^(BOOL finished) {
+        [languageView removeFromSuperview];
+        itemButton.enabled=YES;
+        
+        [self settingPage];
+        
+    }];
+    
+    
+    
+}
+
+
+-(void)hiddenRightButton
+{
+     itemButton.hidden=YES;
+}
+
+
+-(JsonFactory *)requestFactory;
+{
+    JsonFactory *factory=[[JsonFactory alloc] init];
+    factory.delegate=self;
+    
+    return factory;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+
+@end

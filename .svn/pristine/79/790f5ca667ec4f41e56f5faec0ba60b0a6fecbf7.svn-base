@@ -1,0 +1,315 @@
+<?php
+namespace GK\Stdapp\Controller;
+
+/***************************************************************
+ * $Id$
+ * --------------------------------------------------------------
+ *  Copyright notice
+ *
+ *  (c) 2013 Till Wimmer <t.wimmer@bitone.ch>
+ *  
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+/**
+ *
+ *
+ * @package stdapp
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ *
+ */
+class ApiController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+
+	/**
+	 * messageRepository
+	 *
+	 * @var \GK\Stdapp\Domain\Repository\MessageRepository
+	 * @inject
+	 */
+	protected $messageRepository;
+
+        /**
+         * resourceRepository
+         *
+         * @var \GK\Stdapp\Domain\Repository\ResourceRepository
+         * @inject
+         */
+        protected $resourceRepository;
+
+        /**
+         * resourceTypeRepository
+         *
+         * @var \GK\Stdapp\Domain\Repository\ResourceTypeRepository
+         * @inject
+         */
+        protected $resourceTypeRepository;
+
+        /**
+         * customerRepository
+         *
+         * @var \GK\Stdapp\Domain\Repository\CustomerRepository
+         * @inject
+         */
+        protected $customerRepository;
+
+        /**
+         * customerSubtypeRepository
+         *
+         * @var \GK\Stdapp\Domain\Repository\CustomerSubtypeRepository
+         * @inject
+         */
+        protected $customerSubtypeRepository;
+
+	/*
+	 * portalUserRepository
+	 *
+	 * @var \GK\Stdapp\Domain\Repository\PortalUserRepository
+	 * //@var \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository
+	 * //@inject
+	 */
+	protected $portalUserRepository;
+
+        /**
+         * subscriberRepository
+         *
+         * @var \GK\Stdapp\Domain\Repository\SubscriberRepository
+         * @inject
+         */
+        protected $subscriberRepository;
+
+	/**
+	 * @return void
+	 */
+	public function initializeAction() {
+	}
+
+	/**
+	 * action message
+	 *
+	 * @param string $identifier
+	 * @param integer $type
+	 * @param integer $uid
+	 * @return string
+	 */
+	public function messageAction($identifier, $type, $uid=NULL) {
+		$messages = array();
+		foreach( $this->messageRepository->findForApi($identifier, $type, $uid) as $message) {
+			$messages[] = array(
+				'uid' => $message->getUid(), 
+				'title'=> $message->getTitle(),
+				'subtitle' => $message->getSubtitle(),
+				'text' => $message->getText(),
+				'start' => $message->getStart(),
+				'end' => $message->getEnd());
+		}
+		return json_encode($messages);
+	}
+
+	/**
+	 * action resource
+	 *
+	 * @param string $identifier
+	 * @param integer $type
+	 * @param integer $uid
+	 * @return string
+	 */
+	public function resourceAction($identifier, $type, $uid=NULL) {
+		$resources = array();
+		foreach( $this->resourceRepository->findForApi($identifier, $type, $uid) as $resource) {
+			$resources[] = array(
+				'uid' => $resource->getUid(),
+				'sort' => $resource->getSort(), 
+				'title'=> $resource->getTitle(),
+				'url' => $resource->getUrl(),
+				'path' => str_replace('{baseurl}', $this->settings['baseUrl'], $resource->getPath()),
+				'content' => $resource->getContent());
+		}
+		return json_encode($resources);
+	}
+
+	/**
+	 * action config
+	 *
+	 * @param string $identifier
+	 * @param string $token
+	 * @return string
+	 */
+	public function configAction($identifier, $token=NULL) {
+		$configs = array();
+
+		$customer = $this->customerRepository->findOneByIdentifier($identifier);
+
+		if ($customer == NULL)
+			die("Customer not eligible");
+
+		$this->portalUserRepository = $this->objectManager->get('\\GK\\Stdapp\\Domain\\Repository\\PortalUserRepository');
+		$portalUser =  $this->portalUserRepository->findOneByCustomer($customer);
+
+		if ($token != NULL)
+			$this->updateSubscriber($customer, $token);
+
+		$configs['version'] = $this->settings['version']; //'0.2'
+		$configs['status'] = $customer->getStatus();
+		$configs['offerEmail'] = $customer->getEnquiryEmail();//'testmail@tonarchiv.ch';
+		$configs['senderEmail'] = $this->settings['senderEmail'];
+		$configs['longitude'] = $customer->getLongitude();
+		$configs['latitude'] = $customer->getLatitude();
+		$configs['txtColorHeader'] = $customer->getTxtColorHeader();
+		$configs['txtTransparencyHeader'] = $customer->getTxtTransparencyHeader();
+		$configs['baseURL'] = $this->settings['baseUrl'] . $this->settings['uploadPath'] . strtoupper($identifier) . '/';
+		$configs['smtpServer'] = $this->settings['smtpServer'];
+		$configs['smtpUsername'] = $this->settings['smtpUsername'];
+		$configs['smtpPassword'] = $this->settings['smtpPassword']; //"Aw5FUw4OBkI="
+		$configs['langDefault'] = $customer->getDefaultLanguage()->getUid();
+		$configs['name'] = $portalUser->getCompany();
+		$configs['address'] = $portalUser->getAddress();
+		$configs['zip'] = $portalUser->getZip();
+		$configs['city'] = $portalUser->getCity();
+		$configs['telephone'] = $portalUser->getTelephone();
+		$configs['fax'] = $portalUser->getFax();
+		$configs['mailbox'] = $customer->getContactEmail();
+		$configs['hrNumber'] = $customer->getHrNumber();
+		$configs['www'] = $portalUser->getWww();
+
+		$langs = array();
+		foreach($customer->getLanguages() as $language) {
+			$langs[] = array('uid' => $language->getUid(), 'code' => $language->getCode(), 'name' => $language->getTitle());
+		}
+		$configs['language'] = $langs;
+
+		$itemNames = array();
+		foreach($customer->getTypenames() as $typename) {
+				$lang = $typename->getSysLanguageUid();
+				$itemNames[($lang != NULL) ? $lang->getUid() : $configs['langDefault']][$typename->getType()->getUid()] = $typename->getName();
+		}
+		$configs['itemName'] = $itemNames;
+
+		$setups = array();
+		foreach( $this->customerSubtypeRepository->findForApi($identifier)->toArray() as $config) {
+			$resourceType = $config->getResourceType();
+			$typeUid = $resourceType->getUid();
+			$subtype = $config->getSubtype();
+			switch ($subtype) {
+				case 0:
+					$data = str_replace(array('{name}','{address}','{zip}','{city}','{telephone}','{fax}','{mailbox}','{hr_number}','{www}','{baseurl}'),
+						array($configs['name'],$configs['address'],$configs['zip'],$configs['city'],$configs['telephone'],$configs['fax'],$configs['mailbox'],$configs['hrNumber'],$configs['www'],$this->settings['baseUrl']),
+						$config->getData());
+					break;
+				case 1:
+					// if no resources, switch to default
+					if ($resourceType->getAction() == "resource" && $this->resourceRepository->countForApi($identifier, $typeUid) == 0) {
+						$data = str_replace(array('{name}','{address}','{zip}','{city}','{telephone}','{fax}','{mailbox}','{hr_number}','{www}','{baseurl}'),
+							array($configs['name'],$configs['address'],$configs['zip'],$configs['city'],$configs['telephone'],$configs['fax'],$configs['mailbox'],$configs['hrNumber'],$configs['www'],$this->settings['baseUrl']),
+							$config->getData());
+						$subtype = 0;
+					}
+					else
+						$data = $this->settings['baseUrl'] . '/' . $resourceType->getAction() .'/'. $identifier .'/'. $typeUid;
+	
+					break;
+				case 2:
+					$data = str_replace('{baseurl}', $this->settings['baseUrl'], $config->getUrl());
+					break;
+			}
+
+			$setups[] = array(
+				'type'=> $typeUid,
+				'subtype' => $subtype,
+				'data' => $data,
+			);
+		}
+		$configs['setup'] = $setups;
+
+		$subjects = array();
+		foreach($this->resourceRepository->findByType(9, $customer)->toArray() as $subject) {
+			$lang = $subject->getSysLanguageUid();
+			$subjects[($lang != NULL) ? $lang->getUid() : $configs['langDefault']][] = array('uid' => $subject->getUid(), 'title' => $subject->getTitle());
+		}
+		$configs['offerSubject'] = $subjects;
+
+		$contactSubmitMsg = array();
+		foreach($this->resourceRepository->findByType(10, $customer)->toArray() as $subject) {
+			$lang = $subject->getSysLanguageUid();
+			$contactSubmitMsg[($lang != NULL) ? $lang->getUid() : $configs['langDefault']][] = array('uid' => $subject->getUid(), 'title' => $subject->getTitle(), 'content' => $subject->getContent());
+		}
+		$configs['contactSubmitMsg'] = $contactSubmitMsg;
+
+		$offerSubmitMsg = array();
+		foreach($this->resourceRepository->findByType(11, $customer)->toArray() as $subject) {
+			$lang = $subject->getSysLanguageUid();
+			$offerSubmitMsg[($lang != NULL) ? $lang->getUid() : $configs['langDefault']][] = array('uid' => $subject->getUid(), 'title' => $subject->getTitle(), 'content' => $subject->getContent());
+		}
+		$configs['offerSubmitMsg'] = $offerSubmitMsg;
+
+		return json_encode($configs);
+	}
+
+
+	/**
+	 * action subscribe
+	 *
+	 * @param string $identifier
+	 * @param string $token
+	 * @param \GK\Stdapp\Domain\Model\Language $language
+	 * @return string
+	 */
+	public function subscribeAction($identifier, $token, $language=NULL) {
+		$customer = $this->customerRepository->findOneByIdentifier($identifier);
+
+		if ($customer == NULL)
+			die("Customer not eligible");
+
+		$this->updateSubscriber($customer, $token, $language);
+
+		return json_encode(array());
+	}
+
+	/**
+	 * updateSubscriber
+	 *
+	 * @param \GK\Stdapp\Domain\Model\Customer $customer
+	 * @param string $token
+	 * @param \GK\Stdapp\Domain\Model\Language $language
+	 * @return void
+	 */
+	private function updateSubscriber($customer, $token, $language) {
+		if ( !( ctype_xdigit($token) && (strlen($token) == 64) ) )
+			return;
+
+		$subscriber = $this->subscriberRepository->findOneByToken(strtolower($token));
+
+		if ($subscriber == NULL) {
+			$subscriber = $this->objectManager->create('GK\\Stdapp\\Domain\\Model\\Subscriber');
+			$subscriber->setCustomer($customer);
+			$subscriber->setToken(strtolower($token));
+			if ($language != NULL)
+				$subscriber->setLanguage($language);
+			$this->subscriberRepository->add($subscriber);
+		}
+		else {
+			$subscriber->setCustomer($customer);
+			if ($language != NULL)
+				$subscriber->setLanguage($language);
+			$this->subscriberRepository->update($subscriber);
+		}	
+
+	}
+
+}
+?>

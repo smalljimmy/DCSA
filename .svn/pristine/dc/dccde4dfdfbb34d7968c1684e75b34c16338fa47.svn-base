@@ -1,0 +1,30 @@
+//
+//  RootViewController.h
+//  BRS
+//
+//  Created by cgx on 13-10-15.
+//  Copyright (c) 2013年 DouMob. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "LanguageView.h"//语言设置视图
+
+#import "FormViewController.h"
+#import "NewsViewController.h"
+
+#import "PhotoViewController.h"
+#import "AboutUsViewController.h"
+#import "DocsViewController.h"
+#import "MapViewController.h"
+#import "ShopCartViewController.h"
+
+@interface RootViewController : BaseViewController<LanguageSelectDelegate>
+{
+    UIView *bgView;
+    
+    UIView *bottomView;
+    
+    
+}
+
+@end

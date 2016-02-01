@@ -1,0 +1,46 @@
+//
+//  RootViewController.h
+//  BRS
+//
+//  Created by cgx on 13-10-15.
+//  Copyright (c) 2013年 DouMob. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "LanguageView.h"//语言设置视图
+
+#import "FormViewController.h"
+#import "NewsViewController.h"
+
+#import "PhotoViewController.h"
+#import "AboutUsViewController.h"
+#import "DocsViewController.h"
+#import "MapViewController.h"
+#import "ShopCartViewController.h"
+#import "IconNinthViewController.h"
+#import "LegalViewController.h"
+
+#import "WebViewController.h"//点击banner弹出网页
+
+@interface RootViewController : BaseViewController<UIScrollViewDelegate,UIAlertViewDelegate>
+{
+    UIScrollView *homePageScroll;
+    UIPageControl *pageControl;
+    
+    NSDictionary *confDic;
+    NSString *languageCode;
+    
+    
+    UIView *bgView;
+    UIView *bottomView;
+    
+    
+    
+    int arrCount;
+    int flag;
+    
+    NSArray *bannerArray;
+    
+}
+
+@end

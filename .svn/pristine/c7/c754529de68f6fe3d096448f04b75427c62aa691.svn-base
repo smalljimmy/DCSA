@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ch.goco.company"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="19" />
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+	<meta-data android:value="52fb50f356240bfa210e23c5" android:name="UMENG_APPKEY"></meta-data>
+	<meta-data android:value="MAIN" android:name="UMENG_CHANNEL"/>
+	
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:name="ch.goco.GocoApplication">
+        <activity
+            android:name="ch.goco.ui.LoadingActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>            
+        </activity>
+        
+        <activity android:name="ch.goco.ui.HomeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="ch.goco.ui.FormActivity" android:screenOrientation="portrait"/>
+        <activity android:name="ch.goco.ui.PhotoActivity" android:screenOrientation="portrait"/>
+        <activity android:name="ch.goco.ui.PhotoDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="ch.goco.ui.AboutActivity" android:screenOrientation="portrait"/>
+        <activity android:name="ch.goco.ui.DocsActivity" android:screenOrientation="portrait"/>
+        <activity android:name="ch.goco.ui.NewsActivity" android:screenOrientation="portrait"/>
+        <activity android:name="ch.goco.ui.ShopCartActivity" android:screenOrientation="portrait"/>
+        <activity android:name="ch.goco.ui.MapShowActivity" android:screenOrientation="portrait"/>
+        <activity android:name="ch.goco.ui.WebViewActivity" android:screenOrientation="portrait"/>
+        <activity android:name="ch.goco.ui.DefaultInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:name="ch.goco.ui.MessageActivity" android:screenOrientation="portrait"/>
+        <activity android:name="ch.goco.ui.RSSActivity" android:screenOrientation="portrait"/>
+        
+        <service android:name="ch.goco.service.MessageService"/>
+    </application>
+
+</manifest>

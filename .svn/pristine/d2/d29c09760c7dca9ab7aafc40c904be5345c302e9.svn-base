@@ -1,0 +1,77 @@
+//
+//  NewsInfoView.m
+//  BRS
+//
+//  Created by cgx on 13-10-28.
+//  Copyright (c) 2013年 DouMob. All rights reserved.
+//
+
+#import "NewsInfoView.h"
+
+@implementation NewsInfoView
+@synthesize delegate;
+@synthesize receiveStr;
+
+- (id)initWithFrame:(CGRect)frame type:(NSString *)type
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+
+        self.backgroundColor=[UIColor clearColor];
+        
+        UIView *bgView=nil;;
+        if ([type isEqualToString:@"form"])
+        {
+            bgView=[[UIView alloc] initWithFrame:CGRectMake(20, 80, 280, 200+(iPhone5?88:0))];
+        }
+        else if([type isEqualToString:@"news"])
+        {
+             bgView=[[UIView alloc] initWithFrame:CGRectMake(20, 30, 280, 350+(iPhone5?88:0))];
+        }
+        
+        bgView.backgroundColor=[UIColor blackColor];
+        bgView.alpha=0.85;
+        
+        
+        UIView *buttonView=[[UIView alloc] initWithFrame:CGRectMake(250, 10, 25, 25)];
+        buttonView.backgroundColor=[UIColor clearColor];
+        
+        UIImageView *imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+        imageView.image=IMAGE(@"newsinfo_button");
+        [buttonView addSubview:imageView];
+        [imageView release];
+        
+        UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame=CGRectMake(0, 0, 25, 25);
+        [button addTarget:self action:@selector(dissMissSubView) forControlEvents:UIControlEventTouchUpInside];
+        [buttonView addSubview:button];
+        
+        [bgView addSubview:buttonView];
+        [buttonView release];
+        
+        [self addSubview:bgView];
+        [bgView release];
+        
+    }
+    return self;
+}
+
+//页面消失
+-(void)dissMissSubView
+{
+    if ([delegate respondsToSelector:@selector(dissmissInfoPage)])
+    {
+        [delegate dissmissInfoPage];
+    }
+}
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+}
+*/
+
+@end

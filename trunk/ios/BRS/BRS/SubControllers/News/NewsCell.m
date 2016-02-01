@@ -1,0 +1,44 @@
+//
+//  NewsCell.m
+//  BRS
+//
+//  Created by cgx on 13-10-28.
+//  Copyright (c) 2013年 DouMob. All rights reserved.
+//
+
+#import "NewsCell.h"
+
+@implementation NewsCell
+@synthesize timeLabel;
+@synthesize titleLabel;
+@synthesize messageLabel;
+@synthesize deleteButton;
+@synthesize messageContentLabel;
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+-(void)dealloc
+{
+    [titleLabel release];
+    [messageLabel release];
+    [timeLabel release];
+    [messageContentLabel release];
+    
+    [super dealloc];
+}
+
+@end

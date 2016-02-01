@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-17T02:14:20Z" product-name="stdapp">
+		<header/>
+		<body>
+
+			<trans-unit id="tx_stdapp_domain_model_customer">
+				<source>Customer</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.identifier">
+				<source>Identifier</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.company_name">
+				<source>Company Name</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.contact_email">
+				<source>Contact Email</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.enquiry_email">
+				<source>Enquiry Email</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.longitude">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.latitude">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.txt_color_header">
+				<source>Txt Color Header</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.txt_transparency_header">
+				<source>Txt Transparency Header</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.resources">
+				<source>Resources</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.messages">
+				<source>Messages</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.subtypes">
+				<source>Subtypes</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.languages">
+				<source>Languages</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.default_language">
+				<source>Default Language</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customer.hr_number">
+				<source>HR Number</source>
+			</trans-unit>
+
+			<trans-unit id="tx_stdapp_domain_model_resource">
+				<source>Resource</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_resource.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_resource.subtype">
+				<source>Subtype</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_resource.url">
+				<source>Url</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_resource.path">
+				<source>Path</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_resource.content">
+				<source>Content</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_resource.sort">
+				<source>Sort</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_resource.disabled">
+				<source>Disabled</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_resource.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_resource.broadcast">
+				<source>Broadcast</source>
+			</trans-unit>
+
+			<trans-unit id="tx_stdapp_domain_model_resourcetype">
+				<source>Resource Type</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_resourcetype.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_resourcetype.action">
+				<source>Action</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_resourcetype.disabled">
+				<source>Disabled</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_resourcetype.is_menu">
+				<source>Is Menu</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_resourcetype.is_fallback">
+				<source>Is Fallback</source>
+			</trans-unit>
+
+			<trans-unit id="tx_stdapp_domain_model_message">
+				<source>Message</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_message.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_message.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_message.subtitle">
+				<source>Subtitle</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_message.text">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_message.start">
+				<source>Start</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_message.end">
+				<source>End</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_message.sort">
+				<source>Sort</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_message.disabled">
+				<source>Disabled</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_message.broadcast">
+				<source>Broadcast</source>
+			</trans-unit>
+
+			<trans-unit id="tx_stdapp_domain_model_portaluser">
+				<source>Portal User</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_portaluser.customer">
+				<source>Customer</source>
+			</trans-unit>
+			
+			<trans-unit id="fe_users.tx_extbase_type.Tx_Stdapp_PortalUser">
+				<source>StdAPP PortalUser</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_stdapp_domain_model_customersubtype">
+				<source>Customer Subtype</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customersubtype.subtype">
+				<source>Subtype</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customersubtype.url">
+				<source>Url</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customersubtype.data">
+				<source>Data</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customersubtype.resource_type">
+				<source>Resource Type</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customersubtype.customer">
+				<source>Customer</source>
+			</trans-unit>
+
+			<trans-unit id="tx_stdapp_domain_model_language">
+				<source>Language</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_language.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_language.code">
+				<source>Code</source>
+			</trans-unit>
+
+			<trans-unit id="sys_language.tx_extbase_type.Tx_Stdapp_Language">
+				<source>StdAPP Language</source>
+			</trans-unit>
+
+			<trans-unit id="sys_language.tx_extbase_type.Tx_Stdapp_Language">
+				<source>StdAPP Language</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_stdapp_domain_model_subscriber">
+				<source>Subscriber</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_subscriber.token">
+				<source>Token</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_subscriber.tstamp">
+				<source>Tstamp</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_subscriber.customer">
+				<source>Customer</source>
+			</trans-unit>
+
+			<trans-unit id="tx_stdapp_domain_model_customertypename">
+				<source>Customer Typename</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customertypename.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_stdapp_domain_model_customertypename.type">
+				<source>Type</source>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

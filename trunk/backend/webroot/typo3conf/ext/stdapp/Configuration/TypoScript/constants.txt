@@ -1,0 +1,52 @@
+plugin.tx_stdapp {
+	view {
+		# cat=plugin.tx_stdapp/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:stdapp/Resources/Private/Templates/
+		# cat=plugin.tx_stdapp/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:stdapp/Resources/Private/Partials/
+		# cat=plugin.tx_stdapp/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:stdapp/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_stdapp//a; type=string; label=Default storage PID
+		storagePid = 12
+	}
+	settings {
+		# cat=plugin.tx_stdapp//a; type=string; label=Base URL
+		baseUrl = http://stdapp.dataforge.ch
+		# cat=plugin.tx_stdapp/file; type=string; label=Path to uploads
+		uploadPath = /uploads/tx_stdapp/
+		# cat=plugin.tx_stdapp//a; type=string; label=API Version
+		version = 0.2
+		# cat=plugin.tx_stdapp//a; type=string; label=eMail Sender
+		senderEmail = stdapp@stdapp.dataforge.ch
+		# cat=plugin.tx_stdapp//a; type=string; label=SMTP Server
+		smtpServer = hplus-pg.dataforge.ch
+		# cat=plugin.tx_stdapp//a; type=string; label=SMTP Username
+		smtpUsername = stdapp
+		# cat=plugin.tx_stdapp//a; type=string; label=SMTP Password
+		smtpPassword = Aw5FUw4OBkI=
+
+		# cat=plugin.tx_stdapp//a; type=string; label=APN PEM Path
+		apnPem = /var/www/apn-dev.pem
+		# cat=plugin.tx_stdapp//a; type=string; label=APN PEM Secret
+		apnPemSecret = ios123456
+		# cat=plugin.tx_stdapp//a; type=string; label=APN Service URL
+		apnUrl = ssl://gateway.sandbox.push.apple.com:2195
+	}
+}
+
+module.tx_stdapp {
+	view {
+		# cat=module.tx_stdapp/file; type=string; label=Path to template root (BE)
+		templateRootPath = EXT:stdapp/Resources/Private/Backend/Templates/
+		# cat=module.tx_stdapp/file; type=string; label=Path to template partials (BE)
+		partialRootPath = EXT:stdapp/Resources/Private/Backend/Partials/
+		# cat=module.tx_stdapp/file; type=string; label=Path to template layouts (BE)
+		layoutRootPath = EXT:stdapp/Resources/Private/Backend/Layouts/
+	}
+	persistence {
+		# cat=module.tx_stdapp//a; type=string; label=Default storage PID
+		storagePid = 12
+	}
+}

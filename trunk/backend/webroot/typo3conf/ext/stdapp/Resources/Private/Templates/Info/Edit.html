@@ -1,0 +1,15 @@
+<h3>"Üner uns" bearbeiten</h3>
+
+<f:flashMessages />
+
+<f:form action="update"  name="resource" object="{resources.first}">
+	<f:form.hidden property="type" value="3"/>
+	<f:form.hidden property="subtype" value="1"/>
+	<f:form.hidden property="title" value="Info"/>
+	<label for="content">Inhalt</label>
+	<f:form.textarea id="content" property="content" /><br/>
+	<label for="submit">&nbsp;</label>
+	<f:if condition="{resources.first.uid}"><f:then><f:form.submit id="submit" value="Ändern"/></f:then>
+	<f:else><f:form.submit id="submit" value="Speichern"/></f:else></f:if>
+</f:form>
+

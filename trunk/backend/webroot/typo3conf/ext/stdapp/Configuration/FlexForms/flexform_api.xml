@@ -1,0 +1,40 @@
+<T3DataStructure>
+	<sheets>
+	<sDEF>
+		<ROOT>
+			<TCEforms>
+				<sheetTitle>Verhalten</sheetTitle>
+			</TCEforms>
+			<type>array</type>
+			<el>
+			<switchableControllerActions>
+				<TCEforms>
+					<label>Standardaktion des Plugins</label>
+					<config>
+						<type>select</type>
+						<items>
+							<numIndex index="0">
+								<numIndex index="0">Config</numIndex>
+								<numIndex index="1">Api->config</numIndex>
+							</numIndex>
+							<numIndex index="1">
+								<numIndex index="0">Message</numIndex>
+								<numIndex index="1">Api->message</numIndex>
+							</numIndex>
+							<numIndex index="2">
+								<numIndex index="0">Resource</numIndex>
+								<numIndex index="1">Api->resource</numIndex>
+							</numIndex>
+							<numIndex index="3">
+								<numIndex index="0">Subscribe</numIndex>
+								<numIndex index="1">Api->subscribe</numIndex>
+							</numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</switchableControllerActions>
+			</el>
+		</ROOT>
+	</sDEF>
+	</sheets>
+</T3DataStructure>

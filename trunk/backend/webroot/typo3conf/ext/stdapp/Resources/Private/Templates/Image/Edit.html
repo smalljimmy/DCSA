@@ -1,0 +1,39 @@
+<h3>Bild hinzufügen</h3>
+
+<f:flashMessages />
+
+<f:form enctype="multipart/form-data" action="update" name="resource" object="{editResource}">
+	<f:form.hidden property="type" value="2"/>
+	<f:form.hidden property="subtype" value="1"/>
+	<label for="title">Titel</label>
+	<f:form.textfield id="title" class="formtext" property="title" /><br/>
+	<label for="upload">&nbsp;</label>
+	<f:form.upload id="upload" name="file"/><br/>
+	<label for="submit">&nbsp;</label>
+	<f:if condition="{editResource.uid}"><f:then><f:form.submit id="submit" value="Ändern"/></f:then>
+	<f:else><f:form.submit id="submit" value="Speichern"/></f:else></f:if>
+</f:form>
+
+<h3>Bilder-Liste</h3>
+<table>
+<tr>
+	<th></th>
+	<th>Titel</th>
+	<th>Pfad</th>
+	<th>Sort.</th>
+<f:for each="{resources}" as="resource"><tr>
+        <td><f:image src="{userPath}{resource.path}" width="100" height="75" alt="{userPath}{resource.path}" /></td>
+        <td>{resource.title}</td>
+	<td>{resource.path}</td>
+	<td class="sorting">
+		<f:link.action action="moveDown" arguments="{resource:resource}" class="moveDown" title="eine Position nach unten">
+			&#x25BC;
+		</f:link.action>
+		<f:link.action action="moveUp" arguments="{resource:resource}" class="moveUp" title="eine Position nach oben">
+			&#x25B2;
+		</f:link.action>
+	</td>
+	<td><a href="{f:uri.action(arguments:{editResource:resource})}">Bearb.</a> <a href="{f:uri.action(action:'delete',arguments:{resource:resource})}">Lösch.</a></td>
+</tr></f:for>
+</table>
+
